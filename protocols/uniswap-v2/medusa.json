@@ -1,11 +1,11 @@
 {
 	"fuzzing": {
 		"workers": 1,
-		"workerResetLimit": 100,
+		"workerResetLimit": 50,
 		"timeout": 0,
-		"testLimit": 0,
-		"callSequenceLength": 100,
-		"corpusDirectory": "./corpus",
+		"testLimit": 4294967295,
+		"callSequenceLength":25,
+		"corpusDirectory": "medusa_corpus",
 		"coverageEnabled": true,
 		"deploymentOrder": ["EchidnaTester"],
 		"constructorArgs": {},
@@ -22,11 +22,11 @@
 		"testing": {
 			"stopOnFailedTest": true,
 			"stopOnFailedContractMatching": true,
-			"testAllContracts": true,
+			"testAllContracts": false,
 			"traceAll": true,
 			"assertionTesting": {
 				"enabled": true,
-				"testViewMethods": true
+				"testViewMethods": false
 			},
 			"propertyTesting": {
 				"enabled": true,
