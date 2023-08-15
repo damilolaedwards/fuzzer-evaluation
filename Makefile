@@ -5,11 +5,15 @@ fuzzer ?= .
 
 help:
 	@echo "usage:"
+	@echo "	make setup 					set up the env with required dependencies"
 	@echo "	make test					fuzz against default codebase"
 	@echo "	make mutate					create patch files using mutation tools"
 	@echo "	make evaluate <seed> [<mutant> <fuzzer>]	evaluate fuzzers for a particular seed and optionally a mutant and a fuzzer"
-	@echo "	make terraform					use terraform to deploy the infrastructure and start the evaluation"
-	@echo "	make analyse <s3_bucket>			download results files from S3 for all launched instances and analyse the results"
+	@echo "	make run					run all fuzzers in alternating sequence using a default seed value"
+
+
+setup:
+	./setup.sh
 
 test:
 	./test.sh
@@ -20,8 +24,5 @@ mutate:
 evaluate:
 	./evaluate.sh $(seed) $(mutant) $(fuzzer)
 
-terraform:
-	( cd terraform && terraform apply );
-
-analyse:
-	./analyse.sh $(s3_bucket)
+run:
+	./run.sh
